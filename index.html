@@ -7,29 +7,50 @@
 <style>
 
 body{
-font-family:-apple-system,BlinkMacSystemFont;
+font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
 text-align:center;
-margin-top:120px;
-background:#fafafa;
+background:white;
+margin:0;
+padding-top:120px;
 }
 
-h1{
-font-weight:600;
+.introducing{
+font-size:22px;
+color:#6e6e73;
+margin-bottom:20px;
 }
 
 #result{
-font-size:48px;
-margin:40px;
+font-size:64px;
+font-weight:600;
+margin:20px;
+opacity:0;
+transform:translateY(20px);
+transition:all 0.4s ease;
+}
+
+.show{
+opacity:1 !important;
+transform:translateY(0) !important;
 }
 
 button{
 font-size:20px;
-padding:12px 24px;
-border-radius:10px;
+padding:14px 28px;
+border-radius:30px;
 border:none;
 background:black;
 color:white;
 cursor:pointer;
+margin:10px;
+}
+
+button:hover{
+opacity:0.8;
+}
+
+.share{
+background:#1d9bf0;
 }
 
 </style>
@@ -37,11 +58,13 @@ cursor:pointer;
 
 <body>
 
-<h1>Fake Apple Product Generator</h1>
+<div class="introducing">Introducing</div>
 
-<div id="result">Press Generate</div>
+<div id="result">Fake Apple Product</div>
 
 <button onclick="generate()">Generate</button>
+
+<button class="share" onclick="share()">Share</button>
 
 <script>
 
@@ -92,13 +115,35 @@ const modifiers = [
 
 ];
 
+let currentProduct="";
+
 function generate(){
 
 const product = products[Math.floor(Math.random()*products.length)];
 const modifier = modifiers[Math.floor(Math.random()*modifiers.length)];
 
-document.getElementById("result").innerText =
-product + " " + modifier;
+currentProduct = product + " " + modifier;
+
+const result = document.getElementById("result");
+
+result.classList.remove("show");
+
+setTimeout(()=>{
+result.innerText=currentProduct;
+result.classList.add("show");
+},100);
+
+}
+
+function share(){
+
+if(currentProduct==="") return;
+
+const text = "Introducing " + currentProduct;
+
+const url = "https://twitter.com/intent/tweet?text="+encodeURIComponent(text);
+
+window.open(url);
 
 }
 
