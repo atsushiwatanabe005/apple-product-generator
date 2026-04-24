@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Fake Apple Product Generator</title>
 
 <style>
@@ -15,18 +18,19 @@ padding-top:120px;
 }
 
 .introducing{
-font-size:22px;
+font-size:5vw;
 color:#6e6e73;
 margin-bottom:20px;
 }
 
 #result{
-font-size:64px;
+font-size:10vw;
 font-weight:600;
-margin:20px;
+margin:30px;
 opacity:0;
 transform:translateY(20px);
 transition:all 0.4s ease;
+line-height:1.1;
 }
 
 .show{
@@ -34,15 +38,23 @@ opacity:1 !important;
 transform:translateY(0) !important;
 }
 
+.buttons{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:16px;
+margin-top:40px;
+}
+
 button{
 font-size:20px;
-padding:14px 28px;
-border-radius:30px;
+padding:16px 36px;
+border-radius:40px;
 border:none;
 background:black;
 color:white;
 cursor:pointer;
-margin:10px;
+width:220px;
 }
 
 button:hover{
@@ -62,9 +74,13 @@ background:#1d9bf0;
 
 <div id="result">Fake Apple Product</div>
 
+<div class="buttons">
+
 <button onclick="generate()">Generate</button>
 
 <button class="share" onclick="share()">Share</button>
+
+</div>
 
 <script>
 
