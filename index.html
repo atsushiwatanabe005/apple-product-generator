@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fake Apple Product Generator</title>
+
+<style>
+
+body{
+font-family:-apple-system,BlinkMacSystemFont;
+text-align:center;
+margin-top:120px;
+background:#fafafa;
+}
+
+h1{
+font-weight:600;
+}
+
+#result{
+font-size:48px;
+margin:40px;
+}
+
+button{
+font-size:20px;
+padding:12px 24px;
+border-radius:10px;
+border:none;
+background:black;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Fake Apple Product Generator</h1>
+
+<div id="result">Press Generate</div>
+
+<button onclick="generate()">Generate</button>
+
+<script>
+
+const products = [
+"iPhone",
+"MacBook",
+"MacBook Pro",
+"Mac mini",
+"Mac Studio",
+"Mac Pro",
+"iMac",
+"iPad",
+"iPad Pro",
+"Apple Watch",
+"HomePod",
+"AirPods",
+"AirPods Pro",
+"Vision"
+];
+
+const modifiers = [
+"nano",
+"mini",
+"air",
+"pro",
+"pro max",
+"ultra",
+"shuffle",
+"studio",
+"max",
+"plus",
+"SE"
+];
+
+function generate(){
+
+const product = products[Math.floor(Math.random()*products.length)];
+const modifier = modifiers[Math.floor(Math.random()*modifiers.length)];
+
+document.getElementById("result").innerText =
+product + " " + modifier;
+
+}
+
+</script>
+
+</body>
+</html>
